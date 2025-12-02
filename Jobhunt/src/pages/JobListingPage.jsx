@@ -47,7 +47,7 @@ const allJobs = [
     type: "Full-time",
     posted: "Just now",
     description: "Lead product development from conception to launch.",
-    logo: "IC"
+    logo: "https://img.freepik.com/free-vector/hand-drawn-flat-design-gathering-data-business-concept_23-2149145879.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const allJobs = [
     type: "Contract",
     posted: "1 day ago",
     description: "Build scalable backend systems for our cloud platform.",
-    logo: "CT"
+    logo: "https://img.freepik.com/premium-vector/vector-illustration-programmer-flat-design-style_844724-3931.jpg"
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const allJobs = [
     type: "Full-time",
     posted: "4 days ago",
     description: "Implement and maintain CI/CD pipelines.",
-    logo: "IS"
+    logo: "https://img.freepik.com/free-vector/hand-drawn-flat-design-devops-illustration_23-2149383352.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 7,
@@ -80,7 +80,7 @@ const allJobs = [
     type: "Full-time",
     posted: "1 week ago",
     description: "Develop cross-platform mobile applications.",
-    logo: "AW"
+    logo: "https://img.freepik.com/premium-vector/mobile-app-development-illustration-concept-with-characters-smartphone-program-coding_269730-90.jpg"
   },
   {
     id: 8,
@@ -91,7 +91,7 @@ const allJobs = [
     type: "Part-time",
     posted: "2 days ago",
     description: "Ensure product quality through automated testing.",
-    logo: "QF"
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAsB-L2VfQVCwPzshn03e599sB92fzO3sVZGgB6vNGv11sGs8iwoYoRHxZRHG0sUddhM8&usqp=CAU"
   },
   {
     id: 9,
@@ -102,7 +102,7 @@ const allJobs = [
     type: "Full-time",
     posted: "5 days ago",
     description: "Protect systems from cybersecurity threats.",
-    logo: "SN"
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5qDR3VcuU6OilMvmS_6WfiK5dpVDvtk3tjgoi3QX7S8JcBKXgw-4czTOCNN7X9u5ck_M&usqp=CAU"
   },
   {
     id: 10,
@@ -113,7 +113,7 @@ const allJobs = [
     type: "Full-time",
     posted: "3 days ago",
     description: "Advance machine learning algorithms.",
-    logo: "DM"
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Se9xd6zIX5GPczUvNxn8cuHTi-x430QHGR-kR_ICabXyF9i3KVEf8tKqZCKQACwGmQo&usqp=CAU"
   },
   {
     id: 11,
@@ -124,7 +124,7 @@ const allJobs = [
     type: "Part-time",
     posted: "1 week ago",
     description: "Create technical documentation for developers.",
-    logo: "DT"
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL9r7ueYVnoRxvoB48CEL__1M-1VMYKH3IoRjWPtNfFPWIJdRc4eSTREuRXFvc51tI_Cs&usqp=CAU"
   },
   {
     id: 12,
@@ -135,7 +135,7 @@ const allJobs = [
     type: "Full-time",
     posted: "Just now",
     description: "Design cloud infrastructure solutions.",
-    logo: "SC"
+    logo: "https://img.freepik.com/premium-vector/team-members-collaborating-cloudbased-version-control-continuous-deployment_269730-3473.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 13,
@@ -146,7 +146,7 @@ const allJobs = [
     type: "Full-time",
     posted: "2 days ago",
     description: "Build and maintain data pipelines.",
-    logo: "BD"
+    logo: "https://img.freepik.com/free-vector/hand-drawn-flat-design-rpa-illustration_23-2149277643.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 14,
@@ -157,7 +157,7 @@ const allJobs = [
     type: "Part-time",
     posted: "1 day ago",
     description: "Implement designer mockups with precision.",
-    logo: "PP"
+    logo: "https://img.freepik.com/free-vector/app-development-illustration_52683-47931.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 15,
@@ -168,7 +168,7 @@ const allJobs = [
     type: "Contract",
     posted: "1 week ago",
     description: "Facilitate agile development processes.",
-    logo: "AW"
+    logo: "https://img.freepik.com/free-vector/scrum-team-working-project-office_1262-19879.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 16,
@@ -179,7 +179,7 @@ const allJobs = [
     type: "Full-time",
     posted: "3 days ago",
     description: "Manage and optimize database systems.",
-    logo: "DF"
+    logo: "https://img.freepik.com/free-vector/abstract-technology-sql-illustration_23-2149229482.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 17,
@@ -190,7 +190,7 @@ const allJobs = [
     type: "Full-time",
     posted: "Just now",
     description: "Develop end-to-end web applications.",
-    logo: "WC"
+    logo: "https://img.freepik.com/premium-vector/full-stack-developer-working-computer-it-professional-programmer-coding-website-creation-proccess-computer-technology_277904-5495.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 18,
@@ -201,7 +201,7 @@ const allJobs = [
     type: "Part-time",
     posted: "5 days ago",
     description: "Create engaging game experiences.",
-    logo: "PS"
+    logo: "https://img.freepik.com/free-vector/gamers-play-video-game-different-hardware-platforms-cross-platform-play-cross-play-cross-platform-gaming-concept_335657-1819.jpg"
   },
   {
     id: 19,
@@ -212,7 +212,7 @@ const allJobs = [
     type: "Contract",
     posted: "2 days ago",
     description: "Build decentralized applications.",
-    logo: "CT"
+    logo: "https://img.freepik.com/free-vector/web-3-0-technology-isometric-with-blockchain-process-vector-illustration_1284-75508.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 20,
@@ -223,7 +223,7 @@ const allJobs = [
     type: "Full-time",
     posted: "1 week ago",
     description: "Develop immersive reality experiences.",
-    logo: "IL"
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHs3r9jYd-2u9BeiaWI3gHooFYKhuf1lEO_FDafjiiJULJo4mGabuMAPRHEzHXQTnUsnk&usqp=CAU"
   },
   {
     id: 21,
@@ -234,7 +234,7 @@ const allJobs = [
     type: "Full-time",
     posted: "3 days ago",
     description: "Program firmware for IoT devices.",
-    logo: "DT"
+    logo: "https://img.freepik.com/free-vector/micro-chips-assembly-background-with-cpu-symbols-flat-vector-illustration_1284-70274.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 22,
@@ -245,7 +245,7 @@ const allJobs = [
     type: "Part-time",
     posted: "Just now",
     description: "Improve website search rankings.",
-    logo: "SO"
+    logo: "https://img.freepik.com/premium-vector/seo-analytics-concept-illustration_114360-9862.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 23,
@@ -256,7 +256,7 @@ const allJobs = [
     type: "Part-time",
     posted: "1 day ago",
     description: "Provide technical support to employees.",
-    logo: "TS"
+    logo: "https://img.freepik.com/free-vector/customer-support-illustration_23-2148903319.jpg?semt=ais_hybrid&w=740&q=80"
   },
   {
     id: 24,
@@ -267,7 +267,7 @@ const allJobs = [
     type: "Full-time",
     posted: "4 days ago",
     description: "Design and maintain network infrastructure.",
-    logo: "NC"
+    logo: "https://img.freepik.com/premium-vector/system-administrator-upkeeping-server-adjusting-network-pc-hardware-sysadmin-repairing-computer-administration-data-center-maintenance-service-repairman-doing-technical-work-with-server-rack_458444-1733.jpg"
   },
   {
     id: 25,
@@ -278,7 +278,7 @@ const allJobs = [
     type: "Part-time",
     posted: "1 week ago",
     description: "Develop and execute digital marketing campaigns.",
-    logo: "GH"
+    logo: "https://img.freepik.com/free-vector/female-multitasking-work_23-2148390868.jpg?semt=ais_hybrid&w=740&q=80"
   }
 ];
 
@@ -353,14 +353,17 @@ export default function JobListingPage() {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-gray-400" />
             </div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-              className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Job title, keywords, or company"
-            />
+           <input
+  type="text"
+  value={searchQuery}
+  onChange={(e) => setSearchQuery(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") handleSearch();
+  }}
+  className="block w-full pl-10 pr-32 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+  placeholder="Job title, keywords, or company"
+/>
+
             <div className="absolute inset-y-0 right-0 flex items-center pr-3">
               <Button 
                 variant="contained" 
@@ -415,7 +418,7 @@ export default function JobListingPage() {
                     {/* Company Logo */}
                    <div className="flex-shrink-0 mr-4">
   <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
-    <img src={job.logo} alt="Company Logo" className="w-full h-full object-contain" />
+    <img src={job.logo} alt="Company Logo" className="w-full h-full object-cover" />
   </div>
 </div>
 

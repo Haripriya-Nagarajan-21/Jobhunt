@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Search, Home, User, Bell, Mail, Shield, Check } from 'lucide-react';
 import { Button, Typography } from '@mui/material';
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ export default function HomePage() {
               <Button
                 variant="outlined"
                 className="text-indigo-600 border-indigo-500"
-                onClick={() => navigate('/signin')}>
+                onClick={() => navigate('/login')}>
                 <User className="h-4 w-4 mr-2" />
                 Sign In
               </Button>
@@ -69,8 +70,8 @@ export default function HomePage() {
                 variant="contained"
                 className="bg-indigo-600 hover:bg-indigo-700 text-white"
                 component={Link}
-                to="/resume-builder">
-                Get Started
+                to="/register">
+                Sign Up
               </Button>
             </div>
           </div>
@@ -126,41 +127,45 @@ export default function HomePage() {
       </section>
 
       {/* Features Section with Gradient Background */}
-      <section className="bg-gradient-to-r from-blue-50 via-white to-blue-50 py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <Typography variant="h4" className="font-bold text-gray-900">
-              Supercharge Your Job Hunt
-            </Typography>
-            <div className="flex justify-center">
-              <Typography
-                variant="body1"
-                className="mt-4 text-gray-600 max-w-xl text-center"
-              >
-                Everything you need to find and land your dream job.
-              </Typography>
-            </div>
+  
+<section className="py-20 bg-gradient-to-r from-blue-50 via-white to-blue-50">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="text-center mb-14">
+      <Typography variant="h4" className="font-bold text-gray-900">
+        Supercharge Your Job Hunt
+      </Typography>
+      <p className="text-gray-600 mt-3 max-w-xl mx-auto">
+        Tools designed to give you every advantage in your job search.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+      {features.map((f, i) => (
+        <motion.div
+          key={i}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          className="bg-white shadow-md border border-gray-100 p-6 rounded-xl cursor-pointer hover:shadow-2xl transition flex flex-col items-center"
+        >
+          <div className="h-14 w-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-4 shadow">
+            {f.icon}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-indigo-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow transform hover:-translate-y-1 cursor-pointer"
-                onClick={() => index === 1 && navigate('/resume-builder')}>
-                <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center mb-4 shadow">
-                  {feature.icon}
-                </div>
-                <Typography variant="h6" className="text-gray-900 font-medium mb-2">
-                  {feature.title}
-                </Typography>
-                <Typography variant="body2" className="text-gray-700">
-                  {feature.description}
-                </Typography>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            {f.title}
+          </h3>
+
+          <p className="text-gray-600 text-sm text-center max-w-xs">
+            {f.description}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
     </div>
   );
 }
