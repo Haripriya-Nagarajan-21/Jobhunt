@@ -8,7 +8,7 @@ import JobDetails from "./pages/JobDetails";
 import ApplyPage from "./pages/ApplyPage";
 import ResumeBuilderPage from "./pages/ResumeBuilderPage";
 import LoginPage from './pages/LoginPage';
-// import ProfilePage from './pages/ProfilePage'; 
+import ProfilePage from './pages/ProfilePage'; 
 function App() {
   const { user } = useAuth();
 
@@ -24,7 +24,7 @@ function App() {
         <Route path="/jobs/:id" element={<PrivateRoute><JobDetails /></PrivateRoute>} />
         <Route path="/jobs/:id/apply" element={<PrivateRoute><ApplyPage /></PrivateRoute>} />
         <Route path="/resume-builder" element={<PrivateRoute><ResumeBuilderPage /></PrivateRoute>} />
-        {/* <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} /> */}
+        <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
       </Routes>
 
       {/* Mobile Bottom Navigation */}

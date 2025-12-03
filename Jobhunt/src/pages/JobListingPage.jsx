@@ -1,8 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Search, Briefcase, MapPin, DollarSign, Clock, ChevronRight, ArrowLeft } from 'lucide-react';
-import { Button } from '@mui/material';
-
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  Search,
+  MapPin,
+  DollarSign,
+  Clock,
+  ChevronRight,
+  ArrowLeft,
+} from "lucide-react";
+import { Button } from "@mui/material";
 const allJobs = [
   // Previous 25 jobs array with added Part-time jobs
   {
@@ -281,49 +287,48 @@ const allJobs = [
     logo: "https://img.freepik.com/free-vector/female-multitasking-work_23-2148390868.jpg?semt=ais_hybrid&w=740&q=80"
   }
 ];
-
 export default function JobListingPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
+
+  const [searchQuery, setSearchQuery] = useState("");
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
   const [currentPage, setCurrentPage] = useState(1);
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState("All");
+
   const jobsPerPage = 5;
   const totalPages = Math.ceil(filteredJobs.length / jobsPerPage);
 
   useEffect(() => {
-    // Get search query from URL
     const params = new URLSearchParams(location.search);
-    const query = params.get('search') || '';
+    const query = params.get("search") || "";
     setSearchQuery(query);
 
-    // Filter jobs based on search query and active filter
     let filtered = allJobs;
 
     if (query) {
-      filtered = filtered.filter(job => 
-        job.title.toLowerCase().includes(query.toLowerCase()) ||
-        job.company.toLowerCase().includes(query.toLowerCase()) ||
-        job.description.toLowerCase().includes(query.toLowerCase()) ||
-        job.location.toLowerCase().includes(query.toLowerCase())
+      filtered = filtered.filter(
+        (job) =>
+          job.title.toLowerCase().includes(query.toLowerCase()) ||
+          job.company.toLowerCase().includes(query.toLowerCase()) ||
+          job.description.toLowerCase().includes(query.toLowerCase()) ||
+          job.location.toLowerCase().includes(query.toLowerCase())
       );
     }
 
-    if (activeFilter !== 'All') {
-      filtered = filtered.filter(job => job.type === activeFilter);
+    if (activeFilter !== "All") {
+      filtered = filtered.filter((job) => {
+        if (activeFilter === "Remote") return job.location === "Remote";
+        return job.type === activeFilter;
+      });
     }
 
     setFilteredJobs(filtered);
-    setCurrentPage(1); // Reset to first page when search/filter changes
+    setCurrentPage(1);
   }, [location.search, activeFilter]);
 
   const handleSearch = () => {
     navigate(`/jobs?search=${encodeURIComponent(searchQuery)}`);
-  };
-
-  const handleFilterClick = (filterType) => {
-    setActiveFilter(filterType === activeFilter ? 'All' : filterType);
   };
 
   const indexOfLastJob = currentPage * jobsPerPage;
@@ -331,201 +336,198 @@ export default function JobListingPage() {
   const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
 
   return (
-    <div className="h-full w-full bg-gray-50">
-      {/* Search Header */}
-      <div className="bg-white shadow-sm w-full">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 w-full">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">
-              {filteredJobs.length} Job Opportunities Available
-              {searchQuery && ` for "${searchQuery}"`}
-              {activeFilter !== 'All' && ` (${activeFilter})`}
-            </h1>
-            <Button 
-              variant="outlined" 
-              onClick={() => navigate('/')}
-              startIcon={<ArrowLeft className="h-4 w-4" />}>
-              Back to Home
-            </Button>
-          </div>
+    <div className="min-h-screen w-full bg-gray-50">
 
-          <div className="relative max-w-2xl w-full">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
-            </div>
-           <input
-  type="text"
-  value={searchQuery}
-  onChange={(e) => setSearchQuery(e.target.value)}
-  onKeyDown={(e) => {
-    if (e.key === "Enter") handleSearch();
-  }}
-  className="block w-full pl-10 pr-32 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-  placeholder="Job title, keywords, or company"
-/>
+      <div className="bg-white border-b sticky top-0 z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
 
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-              <Button 
-                variant="contained" 
-                color="primary"
-                onClick={handleSearch}
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+
+            <div className="flex md:justify-start justify-center">
+              <Button
+                variant="outlined"
+                startIcon={<ArrowLeft />}
+                onClick={() => navigate("/")}
               >
-                Search Jobs
+                Back to Home
               </Button>
             </div>
+
+            {/* Title */}
+            <div className="text-center">
+              <h1 className="text-3xl font-bold text-gray-900">Find Your Next Job</h1>
+              <p className="text-gray-500 text-sm mt-1">
+                {filteredJobs.length} opportunities available
+              </p>
+            </div>
+
+            {/* Search Bar */}
+            <div className="flex md:justify-end justify-center">
+              <div className="relative w-full md:w-[320px]">
+                <Search className="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                  placeholder="Search..."
+                  className="w-full pl-11 pr-28 py-2.5 rounded-full border border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500"
+                />
+
+                <Button
+                  variant="contained"
+                  onClick={handleSearch}
+                  className="!absolute right-1 top-1/2 -translate-y-1/2 px-4 py-1.5 rounded-full"
+                >
+                  Search
+                </Button>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 w-full h-full">
-        {/* Filters */}
-        <div className="flex flex-wrap gap-4 mb-6">
-          <Button 
-            variant={activeFilter === 'All' ? "contained" : "outlined"}
-            onClick={() => handleFilterClick('All')}>
-            All Jobs
-          </Button>
-          <Button 
-            variant={activeFilter === 'Full-time' ? "contained" : "outlined"}
-            onClick={() => handleFilterClick('Full-time')}>
-            Full-time
-          </Button>
-          <Button 
-            variant={activeFilter === 'Part-time' ? "contained" : "outlined"}
-            onClick={() => handleFilterClick('Part-time')}>
-            Part-time
-          </Button>
-          <Button 
-            variant={activeFilter === 'Contract' ? "contained" : "outlined"}
-            onClick={() => handleFilterClick('Contract')}>
-            Contract
-          </Button>
-          <Button 
-            variant={activeFilter === 'Remote' ? "contained" : "outlined"}
-            onClick={() => handleFilterClick('Remote')}>
-            Remote
-          </Button>
+      {/* ---------------------- FILTER BUTTONS ---------------------- */}
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="flex flex-wrap gap-3">
+          {["All", "Full-time", "Part-time", "Contract", "Remote"].map((filter) => (
+            <Button
+              key={filter}
+              variant={activeFilter === filter ? "contained" : "outlined"}
+              onClick={() => setActiveFilter(filter)}
+            >
+              {filter}
+            </Button>
+          ))}
         </div>
 
-        {/* Job List */}
-        <div className="space-y-6 mb-8">
-          {currentJobs.length > 0 ? (
-            currentJobs.map((job) => (
-              <div key={job.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                <div className="p-6">
-                  <div className="flex items-start">
-                    {/* Company Logo */}
-                   <div className="flex-shrink-0 mr-4">
-  <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center">
-    <img src={job.logo} alt="Company Logo" className="w-full h-full object-cover" />
-  </div>
-</div>
+        {/* ---------------------- JOB LIST ---------------------- */}
+        <div className="space-y-6 mt-8">
+          {currentJobs.map((job) => (
+            <div
+              key={job.id}
+              className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition"
+            >
+              <div className="p-6 flex flex-col sm:flex-row sm:items-start">
 
-                    {/* Job Details */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h2 className="text-lg font-semibold text-gray-900">{job.title}</h2>
-                          <p className="text-indigo-600 font-medium">{job.company}</p>
-                        </div>
-                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          job.type === 'Full-time' ? 'bg-green-100 text-green-800' : 
-                          job.type === 'Part-time' ? 'bg-yellow-100 text-yellow-800' :
-                          job.type === 'Contract' ? 'bg-blue-100 text-blue-800' :
-                          'bg-purple-100 text-purple-800'
-                        }`}>
-                          {job.type}
-                        </span>
-                      </div>
-                      
-                      <div className="mt-2 flex flex-wrap gap-4">
-                        <div className="flex items-center text-sm text-gray-500">
-                          <MapPin className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
-                          {job.location}
-                        </div>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <DollarSign className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
-                          {job.salary}
-                        </div>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Clock className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
-                          {job.posted}
-                        </div>
-                      </div>
-                      
-                      <p className="mt-3 text-sm text-gray-600">{job.description}</p>
+                {/* LOGO */}
+                <div className="w-16 h-16 rounded-xl overflow-hidden bg-gray-200 mr-4 mb-4 sm:mb-0">
+                  <img src={job.logo} className="w-full h-full object-cover" />
+                </div>
+
+                {/* DETAILS */}
+                <div className="flex-1">
+
+                  {/* TITLE + BADGE */}
+                  <div className="flex flex-wrap items-center gap-3 justify-start">
+
+                    <h2 className="text-xl font-semibold text-gray-900">
+                      {job.title}
+                    </h2>
+
+                    {/* Small Badge */}
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap
+                        ${
+                          job.type === "Full-time"
+                            ? "bg-green-100 text-green-700"
+                            : job.type === "Part-time"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : job.type === "Contract"
+                            ? "bg-blue-100 text-blue-700"
+                            : "bg-purple-100 text-purple-700"
+                        }
+                      `}
+                    >
+                      {job.type}
+                    </span>
+
+                  </div>
+
+                  {/* COMPANY */}
+                  <p className="text-indigo-600 font-medium mt-1">{job.company}</p>
+
+                  {/* META INFO */}
+                  <div className="mt-3 flex flex-wrap gap-4 text-gray-500 text-sm">
+                    <div className="flex items-center">
+                      <MapPin className="h-4 w-4 mr-1" />
+                      {job.location}
                     </div>
-                    
-                    {/* Action Button */}
-                    <div className="ml-4 flex-shrink-0">
-                     <Button 
-  variant="contained" 
-  color="primary"
-  endIcon={<ChevronRight className="h-4 w-4" />}
-  onClick={() => navigate(`/jobs/${job.id}`)}
->
-  View Details
-</Button>
+
+                    <div className="flex items-center">
+                      <DollarSign className="h-4 w-4 mr-1" />
+                      {job.salary}
+                    </div>
+
+                    <div className="flex items-center">
+                      <Clock className="h-4 w-4 mr-1" />
+                      {job.posted}
                     </div>
                   </div>
+
+                  {/* DESCRIPTION */}
+                  <p className="mt-3 text-gray-600 text-sm">{job.description}</p>
                 </div>
+
+                {/* BUTTON */}
+                <div className="mt-4 sm:mt-0 sm:ml-4">
+                  <Button
+                    variant="contained"
+                    endIcon={<ChevronRight />}
+                    className="whitespace-nowrap"
+                    onClick={() => navigate(`/jobs/${job.id}`)}
+                  >
+                    View Details
+                  </Button>
+                </div>
+
               </div>
-            ))
-          ) : (
-            <div className="text-center py-12">
-              <h3 className="text-lg font-medium text-gray-900">No jobs found</h3>
-              <p className="mt-2 text-gray-600">
-                Try adjusting your search or filter to find what you're looking for.
-              </p>
-              <Button 
-                variant="outlined" 
-                className="mt-4"
-                onClick={() => {
-                  setSearchQuery('');
-                  setActiveFilter('All');
-                  navigate('/jobs');
-                }}>
-                Clear all filters
-              </Button>
             </div>
-          )}
+          ))}
         </div>
 
-        {/* Pagination */}
-        {filteredJobs.length > 0 && (
-          <div className="flex items-center justify-between">
-            <div className="text-sm text-gray-500">
-              Showing <span className="font-medium">{indexOfFirstJob + 1}</span> to{' '}
-              <span className="font-medium">{Math.min(indexOfLastJob, filteredJobs.length)}</span> of <span className="font-medium">{filteredJobs.length}</span> jobs
-            </div>
-            
-            <div className="flex space-x-2">
+        {/* ---------------------- PAGINATION ---------------------- */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+
+          <p className="text-gray-600 text-sm">
+            Showing <b>{indexOfFirstJob + 1}</b> –{" "}
+            <b>{Math.min(indexOfLastJob, filteredJobs.length)}</b> of{" "}
+            <b>{filteredJobs.length}</b> jobs
+          </p>
+
+          <div className="flex flex-wrap gap-2 justify-center">
+
+            <Button
+              variant="outlined"
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+            >
+              Previous
+            </Button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <Button
-                variant="outlined"
-                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                disabled={currentPage === 1}>
-                Previous
+                key={page}
+                variant={currentPage === page ? "contained" : "outlined"}
+                onClick={() => setCurrentPage(page)}
+              >
+                {page}
               </Button>
-              
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                <Button
-                  key={page}
-                  variant={currentPage === page ? 'contained' : 'outlined'}
-                  onClick={() => setCurrentPage(page)}>
-                  {page}
-                </Button>
-              ))}
-              
-              <Button
-                variant="outlined"
-                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                disabled={currentPage === totalPages}>
-                Next
-              </Button>
-            </div>
+            ))}
+
+            <Button
+              variant="outlined"
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+            >
+              Next
+            </Button>
+
           </div>
-        )}
+        </div>
+
       </div>
     </div>
   );
