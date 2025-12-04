@@ -7,23 +7,23 @@ Users can browse jobs, apply, upload resumes, check a simulated ATS score, and m
 
 ## 🚀 Features
 
-- 🔹 Home page with job search
-- 🔹 Job listings & job details
-- 🔹 Apply page with resume upload (PDF)
-- 🔹 ATS score checker (simulated)
-- 🔹 Profile page (edit details, skills, avatar, resume)
-- 🔹 Login & Register using localStorage
-- 🔹 Fully responsive UI using Tailwind CSS
+- 🔹 Home page with job search  
+- 🔹 Job listings & job details  
+- 🔹 Apply page with resume upload (PDF)  
+- 🔹 ATS score checker (simulated — no backend)  
+- 🔹 Profile page (edit details, skills, avatar, resume)  
+- 🔹 Login & Register using localStorage  
+- 🔹 Fully responsive UI with Tailwind CSS  
 
 ---
 
 ## 🛠 Tech Stack
 
-- **React + Vite**
-- **Tailwind CSS**
-- **React Router**
-- **Material UI (for alerts & components)**
-- **Lucide Icons**
+- **React + Vite**  
+- **Tailwind CSS**  
+- **React Router**  
+- **Material UI** (Alerts, Inputs)  
+- **Lucide Icons**  
 
 ---
 
@@ -32,17 +32,21 @@ Users can browse jobs, apply, upload resumes, check a simulated ATS score, and m
 ```sh
 npm install
 npm run dev
+```
 
 ---
+
 ## 🔮 Future Enhancements
 
 - 🤖 Integrate real AI-based ATS Resume Scoring  
 - 💼 Add recruiter dashboard & job posting system  
-- 📊 Add analytics for job views and applications  
+- 📊 Add analytics for job views & applications  
 - 🔐 Implement full backend authentication (JWT)  
-- ☁ Deploy with a real database (MongoDB / Firebase)  
-- 📱 Add mobile app version (React Native)  
+- ☁ Use a cloud database (MongoDB / Firebase)  
+- 📱 Mobile app version (React Native)  
 - 📨 Email notifications for job applications  
 - ⭐ Save jobs & follow companies  
-- 📝 Resume builder with templates  
+- 📝 Resume builder with downloadable templates  
+
+---
 
