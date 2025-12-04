@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Search, Home, User, Bell, Mail, Shield, Check } from 'lucide-react';
 import { Button, Typography } from '@mui/material';
 import { motion } from "framer-motion";
+import { UserCircle } from "lucide-react";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -35,7 +36,6 @@ export default function HomePage() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-[#e0e7ff] via-white to-[#cfe9ff] flex flex-col font-sans">
 
-      {/* NavBar */}
       <nav className="bg-white/90 backdrop-blur shadow-md sticky top-0 z-50 w-full border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-16">
@@ -56,9 +56,13 @@ export default function HomePage() {
               <button className="text-gray-500 hover:text-indigo-600">
                 <Bell className="h-5 w-5" />
               </button>
-              <button className="text-gray-500 hover:text-indigo-600">
-                <Mail className="h-5 w-5" />
-              </button>
+             <button
+  className="text-gray-500 hover:text-indigo-600"
+  onClick={() => navigate('/profile')}
+>
+  <UserCircle className="h-6 w-6" />
+</button>
+
               <Button
                 variant="outlined"
                 className="text-indigo-600 border-indigo-500"

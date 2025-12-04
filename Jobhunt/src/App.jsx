@@ -9,6 +9,7 @@ import ApplyPage from "./pages/ApplyPage";
 import ResumeBuilderPage from "./pages/ResumeBuilderPage";
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage'; 
+import RegisterPage from './pages/RegisterPage';
 function App() {
   const { user } = useAuth();
 
@@ -16,6 +17,7 @@ function App() {
     <div className="min-h-screen flex flex-col pb-16">
       <Routes>
         {/* Public Route */}
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
 
         {/* Private Routes */}
